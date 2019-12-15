@@ -274,50 +274,6 @@ body {
   }
 }
 
-/* @media only screen and (max-width:414px) {
-    For iphones: 
-      body{
-    background:black;
-    margin: 0 auto;
-  }
-  .main-container {
-    flex-direction: column;
-    height: 736px;
-    width: 414px;
-    margin: 0;
-    background-size: auto;
-  }
-  .container {
-    margin: 0px;
-  }
-  .container2 {
-    margin: 0% 11%;
-  }
-  .forecast {
-    justify-content: center;
-  }
-  #coords {
-    margin-top: -15px;
-  }
-  #mapid {
-  height: 180px;
-  width: auto;
-  }
-  #temp {
-    font-size: 8em;
-  }
-  .btnDiv {
-    padding: 0;
-  }
- .weather-icon1,.weather-icon2,.weather-icon3 {
-    width: 60px;
-    height: 60px;
-  }
-  #temp1,#temp2,#temp3 {
-    font-size: 1.5em;
-  }
-} */
-
 @media only screen and (max-width:320px) {
     /* For iphones: */
   body{
@@ -368,7 +324,7 @@ body {
   #date1,#date2,#date3 {
     font-size: 0.7em;
   }
-  p {
+  #lat, #lon {
     font-size: 0.7em;
   }
   .btn {

@@ -21,9 +21,10 @@
 <body>
 
     <div class="main-container">
+
+
+
         <div class="container">
-
-
             <!-- background====================================-->
             <div id="item"></div>
             <!-- ========================================================-->
@@ -32,7 +33,7 @@
 
             <!-- buttons===================================================-->
             <div class="btnDiv">
-                <button type="button" class="btn">ru</button>
+                <button type="button" class="btn" id="translate">ru</button>
                 <button type="button" class="btn" id="fahrenheit">°F</button>
                 <button type="button" class="btn" id="changeImage"><i class="fa fa-image"></i></button>
             </div>
@@ -41,7 +42,6 @@
 
 
             <!-- main-weather=================================== -->
-
             <div id="weather">
                 <div class="date-time">
                     <div id="location"></div>
@@ -86,13 +86,10 @@
                 </div>
             </div>
             <!-- =================================-->
-
-
         </div>
 
 
         <div class="container2">
-
             <!-- search-bar========================================== -->
 
             <!--====================================-->
@@ -102,10 +99,8 @@
             <!-- map+coords========================================== -->
             <div id="mapid"></div>
             <div id="coords">
-                <p>
-                    latitude: <span id="lat"></span><br />
-                    longitude: <span id="lon"></span>
-                </p>
+                <span id="lat"></span><br />
+                <span id="lon"></span>
             </div>
         </div>
         <!-- ========================================-->
