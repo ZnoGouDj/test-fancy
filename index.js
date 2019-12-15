@@ -5,12 +5,11 @@ let lon;
 
 
 //GEO=========================================================================
-var x = document.getElementById("demo");
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        console.log("Geolocation is not supported by this browser.");
     }
 }
 
@@ -44,7 +43,7 @@ function showPosition(position) {
     document.getElementById('lon').textContent = lon;
 }
 
-//***************************************************************************
+//=====================================================================
 
 getLocation();
 //=============================================BACKGROUND===================================================
@@ -53,7 +52,7 @@ function renderItem(state = "weather") {
         document.getElementsByClassName('main-container')[0].style.backgroundImage = `url(${response.url})`;
     })
 }
-//*************************************************************************************************************
+//======================================================================
 
 
 
@@ -74,12 +73,10 @@ let descriptionReserve;
 let dataReserve;
 let humidityReserve;
 let windReserve;
-function drawWeather(d) { //"cF = celsius" for changing temp, need to know how to deal with AJAX
+function drawWeather(d) { 
     dataReserve = d;
     var celsius = Math.round(parseFloat(d.main.temp) - 273.15);
     var fahrenheit = Math.round(((parseFloat(d.main.temp) - 273.15) * 1.8) + 32);
-    // var lon = d.coord.lon;
-    // var lat = d.coord.lat;
 
 
 
@@ -92,11 +89,6 @@ function drawWeather(d) { //"cF = celsius" for changing temp, need to know how t
     var description = d.weather[0].description;
     descriptionReserve = description;
     var feelsLike = Math.round(parseFloat(d.main.feels_like) - 273.15);
-    // if (cF === celsius) {
-    //     document.getElementById('temp').innerHTML = celsius + '&deg;';
-    // } else {
-    //     document.getElementById('temp').innerHTML = fahrenheit + '℉;';
-    // }
     document.getElementById('description').innerHTML = description + '<br />' + 'feels like: ' + feelsLike + '&deg' + '<br />' + 'humidity: ' + humidity + '%' + '<br />' + 'wind: ' + wind + 'm/s';
     document.getElementById('temp').innerHTML = celsius;
     document.getElementById('location').innerHTML = d.name;
@@ -114,7 +106,7 @@ window.onload = function () {
 
     forecastBalloon(625144);
 }
-//*************************************************************************************************************
+//=======================================================================
 
 
 
@@ -155,7 +147,7 @@ function forecastBalloon(cityID) {
             // catch any errors
         });
 }
-//*************************************************************************************************************
+//========================================================================
 
 
 
@@ -171,7 +163,7 @@ var mm = months[String(today.getMonth()).padStart(2, '0')];
 
 var currentDay = day + ' ' + dd + ' ' + mm;
 document.getElementById('date').innerHTML = currentDay;
-//*************************************************************************************************************
+//========================================================================
 
 
 
@@ -187,7 +179,7 @@ function updateClock() {
     setTimeout(updateClock, 1000);
 }
 updateClock();
-//*************************************************************************************************************
+//========================================================================
 
 
 
@@ -232,7 +224,7 @@ document.getElementById('changeImage').addEventListener("click", function () {
 document.getElementById('fahrenheit').addEventListener("click", function () {
     drawDegrees();
 }, false);
-//**********************************************************************************************
+//=========================================================================
 
 
 
