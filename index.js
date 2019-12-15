@@ -11,8 +11,6 @@ let feelsLikeReserve;
 let russianDescription;
 let belarusianDescription;
 
-
-
 //===============================================GEO=========================================================
 function getLocation() {
     if (navigator.geolocation) {
@@ -45,9 +43,13 @@ function showPosition(position) {
     }
     getISS();
 
-    document.getElementById('lat').textContent = 'latitude: ' + lat;
-    document.getElementById('lon').textContent = 'longitude: ' + lon;
+
+    let la = lat.toFixed(2);
+    let lo = lon.toFixed(2);
+    document.getElementById('lat').textContent = 'latitude: ' + la;
+    document.getElementById('lon').textContent = 'longitude: ' + lo;
 }
+
 
 //===========================================================================================================
 
@@ -87,6 +89,7 @@ function drawWeather(d) {
     descriptionReserve = description;
     let feelsLike = Math.round(parseFloat(d.main.feels_like) - 273.15);
     feelsLikeReserve = feelsLike;
+
     document.getElementById('description').innerHTML = description + '<br />' + 'feels like: ' + feelsLike + '&deg' + '<br />' + 'humidity: ' + humidity + '%' + '<br />' + 'wind: ' + wind + 'm/s';
     document.getElementById('temp').innerHTML = celsius;
     document.getElementById('location').innerHTML = d.name;
@@ -113,7 +116,7 @@ function drawForecast(d) {
         let dayForecast = Number(d.list[i].dt_txt.slice(8, 10));
         let k = String(today.getDay()) - 1 + count;
 
-        document.getElementById(`temp${count}`).innerHTML = celsius + '&deg;';
+        document.getElementById(`temp${count}`).innerHTML = celsius;
         document.getElementById(`weather-icon${count}`).innerHTML = `<img class="weather-icon1" src="http://openweathermap.org/img/wn/${icon}@2x.png"/>`;
         document.getElementById(`date${count}`).innerHTML = (k > 6 ? days[k - 7] : days[k]) + ' ' + dayForecast + '<br />';
         count++;
@@ -170,28 +173,46 @@ function drawDegrees() {
     let fahrenheit = Math.round(((parseFloat(dataReserve.main.temp) - 273.15) * 1.8) + 32);
     let feelsLikeCelsius = Math.round(parseFloat(dataReserve.main.feels_like) - 273.15);
     let feelsLikeFahrenheit = Math.round(((parseFloat(dataReserve.main.feels_like) - 273.15) * 1.8) + 32);
+    let check = document.getElementById('translate').innerText;
 
     if (degreesValue === 'c') {
         document.getElementById('temp').innerHTML = fahrenheit;
         for (let i = 1; i <= 3; i++) {
             let fahrenheitFor = Math.round(((parseFloat(forecastDataReserve.list[i].main.temp) - 273.15) * 1.8) + 32);
-            document.getElementById(`temp${i}`).innerHTML = fahrenheitFor + '℉';
+            document.getElementById(`temp${i}`).innerHTML = fahrenheitFor;
+            document.getElementById(`degreeSignForecast${i}`).setAttribute('class', 'degreeSignForecast');
+            document.getElementById(`degreeSignForecast${i}`).innerText = '℉';
         }
         document.getElementById('degreeSign').innerHTML = '&#8457';
         document.getElementById('degreeSign').setAttribute('style', 'font-size:2em');
         document.getElementById('fahrenheit').innerHTML = '°C';
-        document.getElementById('description').innerHTML = descriptionReserve + '<br />' + 'feels like: ' + feelsLikeFahrenheit + '℉' + '<br />' + 'humidity: ' + humidityReserve + '%' + '<br />' + 'wind: ' + windReserve + 'm/s';
+        if (check === 'ru') {
+            document.getElementById('description').innerHTML = descriptionReserve + '<br />' + 'feels like: ' + feelsLikeFahrenheit + '℉' + '<br />' + 'humidity: ' + humidityReserve + '%' + '<br />' + 'wind: ' + windReserve + 'm/s';
+        } else if (check === 'by') {
+            document.getElementById('description').innerHTML = russianDescription + '<br />' + 'ощущается: ' + feelsLikeFahrenheit + '℉' + '<br />' + 'влажность: ' + humidityReserve + '%' + '<br />' + 'ветер: ' + windReserve + 'м/с';
+        } else {
+            document.getElementById('description').innerHTML = belarusianDescription + '<br />' + 'адчуваецца: ' + feelsLikeFahrenheit + '℉' + '<br />' + 'вiльготнасць: ' + humidityReserve + '%' + '<br />' + 'вецер: ' + windReserve + 'м/с';
+        }
         degreesValue = 'd';
     } else {
         document.getElementById('temp').innerHTML = celsius;
         for (let i = 1; i <= 3; i++) {
             let celsiusFor = Math.round(parseFloat(forecastDataReserve.list[i].main.temp) - 273.15);
-            document.getElementById(`temp${i}`).innerHTML = celsiusFor + '&deg;';
+            document.getElementById(`temp${i}`).innerHTML = celsiusFor;
+            document.getElementById(`degreeSignForecast${i}`).setAttribute('style', 'font-size:3em');
+            document.getElementById(`degreeSignForecast${i}`).removeAttribute('class', 'degreeSignForecast');
+            document.getElementById(`degreeSignForecast${i}`).innerText = '°';
         }
         document.getElementById('degreeSign').innerHTML = '°';
         document.getElementById('degreeSign').setAttribute('style', 'font-size:5em');
         document.getElementById('fahrenheit').innerHTML = '℉';
-        document.getElementById('description').innerHTML = descriptionReserve + '<br />' + 'feels like: ' + feelsLikeCelsius + '&deg' + '<br />' + 'humidity: ' + humidityReserve + '%' + '<br />' + 'wind: ' + windReserve + 'm/s';
+        if (check === 'ru') {
+            document.getElementById('description').innerHTML = descriptionReserve + '<br />' + 'feels like: ' + feelsLikeCelsius + '&deg' + '<br />' + 'humidity: ' + humidityReserve + '%' + '<br />' + 'wind: ' + windReserve + 'm/s';
+        } else if (check === 'by') {
+            document.getElementById('description').innerHTML = russianDescription + '<br />' + 'ощущается: ' + feelsLikeCelsius + '&deg' + '<br />' + 'влажность: ' + humidityReserve + '%' + '<br />' + 'ветер: ' + windReserve + 'м/с';
+        } else {
+            document.getElementById('description').innerHTML = belarusianDescription + '<br />' + 'адчуваецца: ' + feelsLikeCelsius + '&deg' + '<br />' + 'вiльготнасць: ' + humidityReserve + '%' + '<br />' + 'вецер: ' + windReserve + 'м/с';
+        }
         degreesValue = 'c';
     }
 }
@@ -200,7 +221,7 @@ function translateText() {
     let check = document.getElementById('translate').innerText;
 
     if (check === 'ru') {
-        document.getElementById('location').innerText = 'Минск'; //DELETE ME! the other points should be easy
+        document.getElementById('location').innerText = 'Минск';
 
         let date = document.getElementById('date').innerText.slice(0, 3);
         let dateNum = document.getElementById('date').innerText.slice(4, 6);
@@ -209,7 +230,7 @@ function translateText() {
         let newMonth = month === 'Jan' ? month = 'Января' : month === 'Feb' ? month = 'Февраля' : month === 'Mar' ? month = 'Марта' : month === 'Apr' ? month = 'Апреля' : month === 'May' ? month = 'Мая' : month === 'Jun' ? month = 'Июня' : month === 'Jul' ? month = 'Июля' : month === 'Aug' ? month = 'Августа' : month === 'Sep' ? month = 'Сентября' : month === 'Oct' ? month = 'Октября' : month === 'Nov' ? month = 'Ноября' : month = 'Декабря';
         document.getElementById('date').innerText = newDate + ' ' + dateNum + ' ' + newMonth;
         descriptionReserve === 'clear sky' ? russianDescription = 'ясно' : descriptionReserve === 'few clouds' ? russianDescription = 'слегка облачно' : descriptionReserve === 'scattered clouds' ? russianDescription = 'рассеянные облака' : descriptionReserve === 'broken clouds' ? russianDescription = 'облачно' : descriptionReserve === 'shower rain' ? russianDescription = 'ливень' : descriptionReserve === 'rain' ? russianDescription = 'дождь' : descriptionReserve === 'thunderstorm' ? russianDescription = 'гроза' : descriptionReserve === 'snow' ? russianDescription = 'снег' : russianDescription = 'туман';
-        document.getElementById('description').innerHTML = russianDescription + '<br />' + 'ощущается: ' + feelsLikeReserve + '&deg' + '<br />' + 'влажность: ' + humidityReserve + '%' + '<br />' + 'ветер: ' + windReserve + ' м/с'; //will be fail if convert in Fahrenheit but anyway
+        document.getElementById('description').innerHTML = russianDescription + '<br />' + 'ощущается: ' + feelsLikeReserve + '&deg' + '<br />' + 'влажность: ' + humidityReserve + '%' + '<br />' + 'ветер: ' + windReserve + ' м/с';
 
         for (let i = 1; i <= 3; i++) {
             let daysForecast = document.getElementById(`date${i}`).innerText.slice(0, 3);
@@ -219,12 +240,12 @@ function translateText() {
             document.getElementById(`date${i}`).innerText = newForecast + ' ' + y;
         }
 
-        document.getElementById('lat').innerText = 'широта: ' + lat;
-        document.getElementById('lon').innerText = 'долгота: ' + lon;
+        document.getElementById('lat').innerText = 'широта: ' + lat.toFixed(2);
+        document.getElementById('lon').innerText = 'долгота: ' + lon.toFixed(2);
 
         document.getElementById('translate').innerText = 'by';
     } else if (check === 'by') {
-        document.getElementById('location').innerText = 'Мiнск'; //DELETE ME
+        document.getElementById('location').innerText = 'Мiнск';
 
         let date = document.getElementById('date').innerText.slice(0, 2);
 
@@ -245,12 +266,12 @@ function translateText() {
             document.getElementById(`date${i}`).innerText = newForecast + ' ' + y;
         }
 
-        document.getElementById('lat').innerText = 'шырата: ' + lat;
-        document.getElementById('lon').innerText = 'даўгата: ' + lon;
+        document.getElementById('lat').innerText = 'шырата: ' + lat.toFixed(2);
+        document.getElementById('lon').innerText = 'даўгата: ' + lon.toFixed(2);
 
         document.getElementById('translate').innerText = 'en';
     } else if (check === 'en') {
-        document.getElementById('location').innerText = 'Minsk'; //DELETE ME
+        document.getElementById('location').innerText = 'Minsk';
 
         let date = document.getElementById('date').innerText.slice(0, 3);
         let dateNum = document.getElementById('date').innerText.slice(4, 6);
@@ -270,8 +291,8 @@ function translateText() {
             document.getElementById(`date${i}`).innerText = newForecast + ' ' + y;
         }
 
-        document.getElementById('lat').innerText = 'latitude: ' + lat;
-        document.getElementById('lon').innerText = 'longitude: ' + lon;
+        document.getElementById('lat').innerText = 'latitude: ' + lat.toFixed(2);
+        document.getElementById('lon').innerText = 'longitude: ' + lon.toFixed(2);
 
         document.getElementById('translate').innerText = 'ru';
     }

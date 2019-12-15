@@ -21,7 +21,7 @@ body {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-/* ********************************************************** */
+/* ============================================================== */
 
 
 
@@ -32,6 +32,7 @@ body {
   margin: 2vh 0 2vh 4vh;
   justify-content: center;
   align-content: center;
+  background: linear-gradient(90deg, rgba(17,17,22,0.2) 0%, rgba(158,158,161,0.3) 50%, rgba(64,65,65,0.3) 100%);
 }
 
 .container2 {
@@ -40,27 +41,13 @@ body {
   margin: 2vh 4vh 2vh 0;
   justify-content: center;
   align-content: center;
+  background: linear-gradient(90deg, rgba(17,17,22,0.2) 0%, rgba(158,158,161,0.3) 50%, rgba(64,65,65,0.3) 100%);
 }
-/* ********************************************************** */
-
-
-/* BACKGROUND============================================== */
-#item {
-  z-index: 0;
-}
-
-.beach-image {
-    opacity: 0.4;
-    position: absolute;
-    background-size:     contain;                      /* <------ */
-    background-repeat:   no-repeat;
-    background-position: center center; 
-}
-/* ****************************************************** */
+/* ========================================================= */
 
 
 
-/* BUTTONS============================== */
+/* BUTTONS==================================================== */
 .btn {
     background-color: rgb(93, 162, 231); /* Blue background */
     border: none; /* Remove borders */
@@ -83,10 +70,10 @@ body {
   justify-content: space-evenly;
   padding: 5% 0;
 }  
-/* ****************************************** */
+/* ======================================================*/
 
 
-/* MAIN WEATHER ========================= */
+/* MAIN WEATHER ========================================== */
 .date-time {
   display: flex;
   flex-direction: row;
@@ -129,16 +116,18 @@ body {
 
 #degreeSign {
   font-size: 5em;
+  font-weight: bold;
+  padding-top: 5%;
 }
 
 #description {
   font-weight: bold;
 }
-/* ************************************************** */
+/* =============================================================== */
 
 
 
-/* FORECAST============================================== */
+/* FORECAST================================================== */
 .forecast {
   display: inline-flex;
   padding: 1% 3%;
@@ -152,8 +141,19 @@ body {
 #date1, #date2, #date3 {
   text-align: center;
   font-weight: bold;
+  font-size: 1.1em;
 }
-/* ******************************************************* */
+
+#degreeSignForecast1, #degreeSignForecast2, #degreeSignForecast3 {
+  font-size: 3em;
+  padding-top:16%;
+}
+
+.degreeSignForecast {
+  font-weight:bold;
+  font-size:1em !important;
+}
+/* =================================================================== */
 
 
 
@@ -166,7 +166,7 @@ body {
 #coords {
   text-align: center;
 }
-/* ************************************************************ */
+/*====================================================================*/
 
 
 
