@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Weather</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+
+</head>
+
+<body>
+
+<div class="main-container">
+<div class="container">
+
+
+<!-- background====================================-->
+    <div id="item"></div>
+<!-- ***************************************************** -->
+
+
+
+<!-- buttons===================================================-->
+<div class="btnDiv">
+    <button type="button" class="btn">ru</button>
+    <button type="button" class="btn" id="fahrenheit">°F</button>
+    <button type="button" class="btn" id="changeImage"><i class="fa fa-image"></i></button>
+</div>
+<!-- ***************************************************** -->  
+
+<p id="demo"></p>
+
+
+
+<!-- main-weather=================================== -->
+
+    <div id="weather">
+        <div class="date-time">
+            <div id="location"></div>
+            <div id="time"></div>
+        </div>
+            <div id="date"></div>   
+        <div class="rowWeather2">
+            <span id="temp"></span>
+            <span id="degreeSign">°</span>
+            <div class="rowWeather3">
+                <div id="weather-icon"></div>
+                <div id="description"></div>
+            </div>
+        </div>
+    </div>
+<!-- ***************************************************** -->
+
+
+
+<!-- 3-day-forecast ======================================-->
+<div class="forecast">
+    <div id="weather1">
+        <div id="date1"></div>
+        <div class="row2">
+            <h1 id="temp1"></h1>
+            <div id="weather-icon1"></div>
+        </div>
+    </div>
+    <div id="weather2">
+        <div id="date2"></div>
+        <div class="row2">
+            <h1 id="temp2"></h1>
+            <div id="weather-icon2"></div>
+        </div>
+    </div>
+    <div id="weather3">
+        <div id="date3"></div>
+        <div class="row2">
+            <h1 id="temp3"></h1>
+            <div id="weather-icon3"></div>
+        </div>
+    </div>
+</div>
+<!-- ***************************************************** -->
+
+
+</div>
+
+
+<div class="container2">
+
+<!-- search-bar========================================== -->
+
+<!-- ***************************************************** -->
+
+
+
+<!-- map+coords========================================== -->
+    <div id="mapid"></div>
+    <div id="coords">
+        <p>
+            latitude: <span id="lat"></span><br />
+            longitude: <span id="lon"></span>
+        </p>
+    </div>
+</div>
+<!-- ***************************************************** -->
+</div>
+<!-- script====================================== -->
+    <script src="index.js"></script>
+</body>
+
+</html>
