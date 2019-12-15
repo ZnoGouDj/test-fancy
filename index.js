@@ -1,37 +1,44 @@
 
-    let lat;
-    let lon;
+let lat;
+let lon;
 
 
 
 //GEO=========================================================================
 var x = document.getElementById("demo");
 function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
 }
 
 function showPosition(position) {
 
-  lat = position.coords.latitude;
+    lat = position.coords.latitude;
     lon = position.coords.longitude;
     console.log(lon, lat);
 
     //=============================================MAP===================================================
+    const issIcon = L.icon({
+        iconUrl: 'marker.png',
+        iconSize: [32, 32],
+        iconAnchor: [25, 16]
+    });
 
+    const mymap = L.map('mapid').setView([lat, lon], 13);
+    const marker = L.marker([0, 0], {icon: issIcon}).addTo(mymap);//no need maybe
+    const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
-const mymap = L.map('mapid').setView([lat, lon], 13);
-const marker = L.marker([0, 0]).addTo(mymap);//no need maybe
-const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+    const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    const tiles = L.tileLayer(tileUrl, { attribution });
+    tiles.addTo(mymap);
 
-const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-const tiles = L.tileLayer(tileUrl, { attribution });
-tiles.addTo(mymap);
-
-
+    async function getISS() {
+        marker.setLatLng([lat, lon]);
+    }
+    getISS();
 
     document.getElementById('lat').textContent = lat;
     document.getElementById('lon').textContent = lon;
@@ -41,11 +48,11 @@ tiles.addTo(mymap);
 
 getLocation();
 //=============================================BACKGROUND===================================================
-function renderItem(state = "weather"){
+function renderItem(state = "weather") {
     fetch(`https://source.unsplash.com/1600x900/?${state}`).then((response) => {
-      document.getElementsByClassName('main-container')[0].style.backgroundImage = `url(${response.url})`;
-    }) 
-  }
+        document.getElementsByClassName('main-container')[0].style.backgroundImage = `url(${response.url})`;
+    })
+}
 //*************************************************************************************************************
 
 
@@ -93,7 +100,7 @@ function drawWeather(d) { //"cF = celsius" for changing temp, need to know how t
     document.getElementById('description').innerHTML = description + '<br />' + 'feels like: ' + feelsLike + '&deg' + '<br />' + 'humidity: ' + humidity + '%' + '<br />' + 'wind: ' + wind + 'm/s';
     document.getElementById('temp').innerHTML = celsius;
     document.getElementById('location').innerHTML = d.name;
-   
+
     // document.getElementById('lat').textContent = lat;
     // document.getElementById('lon').textContent = lon;
     console.log(lat, lon);
@@ -104,7 +111,7 @@ function drawWeather(d) { //"cF = celsius" for changing temp, need to know how t
 
 window.onload = function () {
     weatherBalloon(625144);
-    
+
     forecastBalloon(625144);
 }
 //*************************************************************************************************************
@@ -117,7 +124,7 @@ let count = 1;
 function drawForecast(d) {
     forecastDataReserve = d;
     for (let i = 7; i < 24; i += 8) {
-        var daysForecast = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday', 'Sunday'];
+        var daysForecast = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
         // var monthsForecast = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
         var celsius = Math.round(parseFloat(d.list[i].main.temp) - 273.15);
@@ -134,7 +141,7 @@ function drawForecast(d) {
         count++;
     }
     //well and do something with new Date();
-    
+
 }
 
 function forecastBalloon(cityID) {
@@ -155,8 +162,8 @@ function forecastBalloon(cityID) {
 //=============================================DATE===================================================
 var today = new Date();
 
-var days = ['Mon','Tue','Wed','Thu','Fri','Sat', 'Sun'];
-var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 var day = days[String(today.getDay()) - 1] || 'Sun';
 var dd = String(today.getDate()).padStart(2, '0');
@@ -215,14 +222,14 @@ function drawDegrees() {
         document.getElementById('description').innerHTML = descriptionReserve + '<br />' + 'feels like: ' + feelsLikeCelsius + '&deg' + '<br />' + 'humidity: ' + humidityReserve + '%' + '<br />' + 'wind: ' + windReserve + 'm/s';
         degreesValue = 'c';
     }
-    
+
 }
 
-document.getElementById('changeImage').addEventListener("click", function() {
+document.getElementById('changeImage').addEventListener("click", function () {
     renderItem(descriptionReserve);
 }, false);
 
-document.getElementById('fahrenheit').addEventListener("click", function() {
+document.getElementById('fahrenheit').addEventListener("click", function () {
     drawDegrees();
 }, false);
 //**********************************************************************************************
