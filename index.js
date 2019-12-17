@@ -10,6 +10,7 @@ let degreesValue = 'c'; //celsius or fahrenheit
 let feelsLikeReserve;
 let russianDescription;
 let belarusianDescription;
+let timeReserved;
 
 //===============================================GEO=========================================================
 function getLocation() {
@@ -55,8 +56,11 @@ function showPosition(position) {
 
 getLocation();
 //=============================================BACKGROUND===================================================
-function renderItem(state = "weather") {
-    fetch(`https://source.unsplash.com/1600x900/?${state}`).then((response) => {
+function renderItem(state = "clouds", mm, timeReserved = "15:00") {
+    let season = mm === "December" ? "winter" : mm === "January" ? "winter" : mm === "February" ? "winter" : mm === "March" ? "spring" : mm === "April" ? "spring" : mm === "May" ? "spring" : mm === "June" ? "summer" : mm === "July" ? "summer" : mm === "August" ? "summer" : "autumn";
+    let partsOfDay = timeReserved.slice(0, 2);
+    let morningAfternoonEveningNight = partsOfDay >= 21 ? "night" : partsOfDay >= 17 ? "evening" : partsOfDay >= 12 ? "afternoon" : partsOfDay >= 5 ? "morning" : "night";
+    fetch(`https://source.unsplash.com/1600x900/?${state},${season},${morningAfternoonEveningNight}`).then((response) => {
         document.getElementsByClassName('main-container')[0].style.backgroundImage = `url(${response.url})`;
     })
 }
@@ -91,10 +95,10 @@ function drawWeather(d) {
     feelsLikeReserve = feelsLike;
 
     document.getElementById('description').innerHTML = description + '<br />' + 'feels like: ' + feelsLike + '&deg' + '<br />' + 'humidity: ' + humidity + '%' + '<br />' + 'wind: ' + wind + 'm/s';
-    document.getElementById('temp').innerHTML = celsius;
+    document.getElementById('temp').innerHTML = (celsius < 10 ? '0' : '') + celsius;
     document.getElementById('location').innerHTML = d.name;
     document.getElementById('weather-icon').innerHTML = `<img class="weather-icon" src="http://openweathermap.org/img/wn/${icon}@2x.png"/>`;
-    renderItem(description);
+    renderItem(description, mm, timeReserved);
 
 }
 
@@ -116,7 +120,7 @@ function drawForecast(d) {
         let dayForecast = Number(d.list[i].dt_txt.slice(8, 10));
         let k = String(today.getDay()) - 1 + count;
 
-        document.getElementById(`temp${count}`).innerHTML = celsius;
+        document.getElementById(`temp${count}`).innerHTML = (celsius < 10 ? '0' : '') + celsius;
         document.getElementById(`weather-icon${count}`).innerHTML = `<img class="weather-icon1" src="http://openweathermap.org/img/wn/${icon}@2x.png"/>`;
         document.getElementById(`date${count}`).innerHTML = (k > 6 ? days[k - 7] : days[k]) + ' ' + dayForecast + '<br />';
         count++;
@@ -159,6 +163,7 @@ function updateClock() {
     let now = new Date(),
         time = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
     document.getElementById('time').innerHTML = time;
+    timeReserved = time;
     setTimeout(updateClock, 1000);
 }
 updateClock();
@@ -195,10 +200,10 @@ function drawDegrees() {
         }
         degreesValue = 'd';
     } else {
-        document.getElementById('temp').innerHTML = celsius;
+        document.getElementById('temp').innerHTML = (celsius < 10 ? '0' : '') + celsius;
         for (let i = 1; i <= 3; i++) {
             let celsiusFor = Math.round(parseFloat(forecastDataReserve.list[i].main.temp) - 273.15);
-            document.getElementById(`temp${i}`).innerHTML = celsiusFor;
+            document.getElementById(`temp${i}`).innerHTML = (celsiusFor < 10 ? '0' : '') + celsiusFor;
             document.getElementById(`degreeSignForecast${i}`).setAttribute('style', 'font-size:3em');
             document.getElementById(`degreeSignForecast${i}`).removeAttribute('class', 'degreeSignForecast');
             document.getElementById(`degreeSignForecast${i}`).innerText = '°';
@@ -299,7 +304,7 @@ function translateText() {
 }
 
 document.getElementById('changeImage').addEventListener("click", function () {
-    renderItem(descriptionReserve);
+    renderItem(descriptionReserve, mm, timeReserved);
 }, false);
 
 document.getElementById('fahrenheit').addEventListener("click", function () {

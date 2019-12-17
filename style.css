@@ -1,25 +1,25 @@
 body {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 400;
-    font-size: 1.3em;
-    color: #fff;
-    text-shadow: .1em .1em 0 rgba(0, 0, 0, 0.3);
-    margin: 0 auto;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+  font-size: 1.3em;
+  color: #fff;
+  text-shadow: .1em .1em 0 rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
 }
 
 * {
-  z-index: 1;
-  /* border: 1px solid red; */
+z-index: 1;
+/* border: 1px solid red; */
 }
 
 
 
 /* MAIN-CONTAINER================================================= */
 .main-container {
-  display: inline-flex;
-  margin: 1%;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+display: inline-flex;
+margin: 1%;
+background-repeat: no-repeat;
+background-size: 100% 100%;
 }
 /* ============================================================== */
 
@@ -27,21 +27,21 @@ body {
 
 /* CONTAINERS================================================= */
 .container {
-  display: inline-flex;
-  flex-direction: column;
-  margin: 2vh 0 2vh 4vh;
-  justify-content: center;
-  align-content: center;
-  background: linear-gradient(90deg, rgba(17,17,22,0.2) 0%, rgba(158,158,161,0.3) 50%, rgba(64,65,65,0.3) 100%);
+display: inline-flex;
+flex-direction: column;
+margin: 2vh 0 2vh 4vh;
+justify-content: center;
+align-content: center;
+background: linear-gradient(to bottom, rgba(63,76,107,0.5) 0%,rgba(63,76,107,0.5) 100%);
 }
 
 .container2 {
-  display: inline-flex;
-  flex-direction: column;
-  margin: 2vh 4vh 2vh 0;
-  justify-content: center;
-  align-content: center;
-  background: linear-gradient(90deg, rgba(17,17,22,0.2) 0%, rgba(158,158,161,0.3) 50%, rgba(64,65,65,0.3) 100%);
+display: inline-flex;
+flex-direction: column;
+margin: 2vh 4vh 2vh 0;
+justify-content: center;
+align-content: center;
+background: linear-gradient(to bottom, rgba(63,76,107,0.5) 0%,rgba(63,76,107,0.5) 100%);
 }
 /* ========================================================= */
 
@@ -49,79 +49,79 @@ body {
 
 /* BUTTONS==================================================== */
 .btn {
-    background-color: rgb(93, 162, 231); /* Blue background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 12px 14px; /* Some padding */
-    font-size: 16px;
-    font-weight: bold; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    border-radius: 5px;
-  }
-  
-  /* Darker background on mouse-over */
+  background-color: rgb(93, 162, 231); /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 14px; /* Some padding */
+  font-size: 16px;
+  font-weight: bold; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 5px;
+}
+
+/* Darker background on mouse-over */
 .btn:hover {
-    background-color: RoyalBlue;
-    border-radius: 7px;
-  }
+  background-color: RoyalBlue;
+  border-radius: 7px;
+}
 
 .btnDiv {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 5% 0;
+display: flex;
+justify-content: space-evenly;
+padding: 5% 0;
 }  
 /* ======================================================*/
 
 
 /* MAIN WEATHER ========================================== */
 .date-time {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 1% 0;
+display: flex;
+flex-direction: row;
+justify-content: center;
+padding: 1% 0;
 }
 
 .rowWeather2 {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  padding: 3% 0;
+display: flex;
+align-content: center;
+justify-content: center;
+padding: 3% 0;
 }
 
 .rowWeather3 {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
 }
 
 .date-time {
-  font-weight: bold;
-  font-size: 2em;
+font-weight: bold;
+font-size: 2em;
 }
 
 #date {
-  text-align: center;
-  font-weight: bold;
-  margin: 0 4%;
+text-align: center;
+font-weight: bold;
+margin: 0 4%;
 }
 
 #time {
-  margin: 0 4%;
+margin: 0 4%;
 }
 
 #temp {
-  font-size: 10em;
-  font-weight: bolder;
+font-size: 10em;
+font-weight: bolder;
 }
 
 #degreeSign {
-  font-size: 5em;
-  font-weight: bold;
-  padding-top: 5%;
+font-size: 5em;
+font-weight: bold;
+padding-top: 5%;
 }
 
 #description {
-  font-weight: bold;
+font-weight: bold;
 }
 /* =============================================================== */
 
@@ -129,29 +129,29 @@ body {
 
 /* FORECAST================================================== */
 .forecast {
-  display: inline-flex;
-  padding: 1% 3%;
+display: inline-flex;
+padding: 1% 3%;
 }
 
 .row2 {
-  display: inline-flex;
-  flex-direction: row;
+display: inline-flex;
+flex-direction: row;
 }
 
 #date1, #date2, #date3 {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.1em;
+text-align: center;
+font-weight: bold;
+font-size: 1.1em;
 }
 
 #degreeSignForecast1, #degreeSignForecast2, #degreeSignForecast3 {
-  font-size: 3em;
-  padding-top:16%;
+font-size: 3em;
+padding-top:12%;
 }
 
 .degreeSignForecast {
-  font-weight:bold;
-  font-size:1em !important;
+font-weight:bold;
+font-size:1em !important;
 }
 /* =================================================================== */
 
@@ -159,187 +159,197 @@ body {
 
 /* MAP+COORDS====================================================== */
 #mapid {
-  height: 60%;
-  width: 400px;
+height: 60%;
+width: 400px;
 }
 
 #coords {
-  text-align: center;
+text-align: center;
 }
 /*====================================================================*/
 
 
 
 @media only screen and (max-width:1024px) {
-    /* For iPad Pro tablets: */
-  body{
-    background:black;
-    margin: 0 auto;
-  }
-  .main-container {
-    flex-direction: column;
-    height: 1366px;
-    width: 1024px;
-    margin: 0;
-  }
-  .container {
-    margin: 0px;
-  }
-  .container2 {
-    margin: 7%;
-  }
-  .forecast {
-    justify-content: center;
-  }
-  #coords {
-    margin-top: 4%;
-  }
-  #mapid {
-  height: 360px;
-  width: auto;
+  /* For iPad Pro tablets: */
+body{
+  background:black;
+  margin: 0 auto;
+}
+.main-container {
+  flex-direction: column;
+  height: 1366px;
+  width: 1024px;
+  margin: 0;
+}
+.container {
+  margin: 0px;
+}
+.container2 {
+  margin: 7%;
+}
+.forecast {
+  justify-content: center;
+}
+#coords {
+  margin-top: 4%;
+}
+#mapid {
+height: 360px;
+width: auto;
 }
 
 @media only screen and (max-width:768px) {
-    /* For iPad tablets: */
-  body{
-    background:black;
-    margin: 0 auto;
-  }
-  .main-container {
-    flex-direction: column;
-    height: 1024px;
-    width: 768px;
-    margin: 0;
-  }
-  .container {
-    margin: 0px;
-  }
-  .container2 {
-    margin: 3% 9%;
-  }
-  .forecast {
-    justify-content: center;
-  }
-  #coords {
-    margin-top: auto;
-  }
-  #mapid {
-  height: 240px;
-  width: auto;
+  /* For iPad tablets: */
+body{
+  background:black;
+  margin: 0 auto;
+}
+.main-container {
+  flex-direction: column;
+  height: 1024px;
+  width: 768px;
+  margin: 0;
+}
+.container {
+  margin: 0px;
+}
+.container2 {
+  margin: 3% 9%;
+}
+.forecast {
+  justify-content: center;
+}
+#coords {
+  margin-top: auto;
+}
+#mapid {
+height: 240px;
+width: auto;
 }
 }
 
-  }
-  @media only screen and (max-width:375px) {
-    /* For iphone X: */
-      body{
-    background:black;
-    margin: 0 auto;
-  }
-  .main-container {
-    flex-direction: column;
-    height: 812px;
-    width: 375px;
-    margin: 0;
-    background-size: auto;
-  }
-  .container {
-    margin: 0px;
-  }
-  .container2 {
-    margin: 0% 9%;
-  }
-  .forecast {
-    justify-content: center;
-  }
-  #coords {
-    margin-top: -15px;
-  }
-  #mapid {
-  height: 240px;
-  width: auto;
-  }
-  #temp {
-    font-size: 8em;
-  }
-  .btnDiv {
-    padding: 0;
-  }
- .weather-icon1,.weather-icon2,.weather-icon3 {
-    width: 60px;
-    height: 60px;
-  }
-  #temp1,#temp2,#temp3 {
-    font-size: 1.5em;
-  }
+}
+@media only screen and (max-width:375px) {
+  /* For iphone X: */
+    body{
+  background:black;
+  margin: 0 auto;
+}
+.main-container {
+  flex-direction: column;
+  height: 812px;
+  width: 375px;
+  margin: 0;
+  background-size: auto;
+}
+.container {
+  margin: 0px;
+}
+.container2 {
+  margin: 0% 9%;
+}
+.forecast {
+  justify-content: center;
+}
+#coords {
+  margin-top: 0px;
+}
+#mapid {
+height: 240px;
+width: auto;
+}
+#temp {
+  font-size: 8em;
+  margin-top:30px;
+}
+.btnDiv {
+  padding: 0;
+}
+.weather-icon1,.weather-icon2,.weather-icon3 {
+  width: 60px;
+  height: 60px;
+}
+#temp1,#temp2,#temp3 {
+  font-size: 1.5em;
+}
 }
 
 @media only screen and (max-width:320px) {
-    /* For iphones: */
-  body{
-    background:black;
-    margin: 0 auto;
-  }
-  .main-container {
-    flex-direction: column;
-    height: 568px;
-    width: 320px;
-    margin: 0;
-    background-size: auto;
-  }
-  .container {
-    margin: 10px 0px;
-  }
-  .container2 {
-    margin: 0% 12%;
-  }
-  .forecast {
-    justify-content: center;
-  }
-  #coords {
-    margin-top: 0px;
-  }
-  #mapid {
-  height: 140px;
-  width: auto;
-  }
+  /* For iphones: */
+body{
+  background:black;
+  margin: 0 auto;
+}
+.main-container {
+  flex-direction: column;
+  height: 568px;
+  width: 320px;
+  margin: 0;
+  background-size: auto;
+}
+.container {
+  margin: 10px 0px;
+}
+.container2 {
+  margin: 0% 12%;
+}
+.forecast {
+  justify-content: center;
+}
+#coords {
+  margin-top: 0px;
+}
+#mapid {
+height: 140px;
+width: auto;
+}
 
 
-  #temp {
-    font-size: 6em;
-  }
-  #description {
-    font-size: 0.8em;
-  }
-  .date-time {
-    font-size: 1em;
-  }
-  #date {
-    font-size: 0.7em;
-  }
-  .weather-icon {
-    height: 50px;
-    width: 50px;
-  }
-  #date1,#date2,#date3 {
-    font-size: 0.7em;
-  }
-  #lat, #lon {
-    font-size: 0.7em;
-  }
-  .btn {
-    padding: 10px 12px;
-  }
+#temp {
+  font-size: 5em;
+}
+#degreeSign {
+  font-size: 4em;
+  font-weight: normal;
+}
+#description {
+  font-size: 0.8em;
+}
+.date-time {
+  font-size: 1em;
+}
+#date {
+  font-size: 0.7em;
+}
+.weather-icon {
+  height: 50px;
+  width: 50px;
+}
+#date1,#date2,#date3 {
+  font-size: 0.7em;
+}
+#lat, #lon {
+  font-size: 0.7em;
+}
+.btn {
+  padding: 10px 12px;
+}
 
 
-  .btnDiv {
-    padding: 0;
-  }
- .weather-icon1,.weather-icon2,.weather-icon3 {
-    width: 60px;
-    height: 60px;
-  }
-  #temp1,#temp2,#temp3 {
-    font-size: 1.5em;
-  }
+.btnDiv {
+  padding: 0;
+}
+.weather-icon1,.weather-icon2,.weather-icon3 {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+#temp1,#temp2,#temp3 {
+  font-size: 1.5em;
+}
+#degreeSignForecast1, #degreeSignForecast2, #degreeSignForecast3 {
+  font-size: 2em;
+}
 }
