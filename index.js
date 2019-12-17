@@ -62,6 +62,9 @@ function renderItem(state = "clouds", mm, timeReserved = "15:00") {
     let morningAfternoonEveningNight = partsOfDay >= 21 ? "night" : partsOfDay >= 17 ? "evening" : partsOfDay >= 12 ? "afternoon" : partsOfDay >= 5 ? "morning" : "night";
     fetch(`https://source.unsplash.com/1600x900/?${state},${season},${morningAfternoonEveningNight}`).then((response) => {
         document.getElementsByClassName('main-container')[0].style.backgroundImage = `url(${response.url})`;
+        if (response.url === 'https://images.unsplash.com/source-404?fit=crop&fm=jpg&h=800&q=60&w=1200') {
+            document.getElementsByClassName('main-container')[0].style.backgroundImage = `./planB.jpg`;
+        }
     })
 }
 //=======================================================================
