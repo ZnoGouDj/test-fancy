@@ -98,7 +98,7 @@ function drawWeather(d) {
     feelsLikeReserve = feelsLike;
 
     document.getElementById('description').innerHTML = description + '<br />' + 'feels like: ' + feelsLike + '&deg' + '<br />' + 'humidity: ' + humidity + '%' + '<br />' + 'wind: ' + wind + 'm/s';
-    document.getElementById('temp').innerHTML = (celsius < 10 ? '0' : '') + celsius;
+    document.getElementById('temp').innerHTML = (celsius < 10 && celsius > -1 ? '0' : '') + celsius;
     document.getElementById('location').innerHTML = d.name;
     document.getElementById('weather-icon').innerHTML = `<img class="weather-icon" src="http://openweathermap.org/img/wn/${icon}@2x.png"/>`;
     renderItem(description, mm, timeReserved);
@@ -123,7 +123,7 @@ function drawForecast(d) {
         let dayForecast = Number(d.list[i].dt_txt.slice(8, 10));
         let k = String(today.getDay()) - 1 + count;
 
-        document.getElementById(`temp${count}`).innerHTML = (celsius < 10 ? '0' : '') + celsius;
+        document.getElementById(`temp${count}`).innerHTML = (celsius < 10 && celsius > -1 ? '0' : '') + celsius;
         document.getElementById(`weather-icon${count}`).innerHTML = `<img class="weather-icon1" src="http://openweathermap.org/img/wn/${icon}@2x.png"/>`;
         document.getElementById(`date${count}`).innerHTML = (k > 6 ? days[k - 7] : days[k]) + ' ' + dayForecast + '<br />';
         count++;
