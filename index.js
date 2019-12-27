@@ -203,7 +203,7 @@ function drawDegrees() {
         }
         degreesValue = 'd';
     } else {
-        document.getElementById('temp').innerHTML = (celsius < 10 ? '0' : '') + celsius;
+        document.getElementById('temp').innerHTML = (celsius < 10 && celsius > -1 ? '0' : '') + celsius;
         for (let i = 1; i <= 3; i++) {
             let celsiusFor = Math.round(parseFloat(forecastDataReserve.list[i].main.temp) - 273.15);
             document.getElementById(`temp${i}`).innerHTML = (celsiusFor < 10 && celsiusFor > -1 ? '0' : '') + celsiusFor;
